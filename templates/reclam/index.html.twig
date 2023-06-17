@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <head><title>Contact Us</title></head>
+<body id="wrapper">
+
+
+
+    <main id="main" class="site-main contact-main">
+        <div class="page-title page-title--small align-left" style="background-image: url({{ asset('images/bg/bg-about.png') }});">
+            <div class="container">
+                <div class="page-title__content">
+                    <h1 class="page-title__name">Réclamation</h1>
+
+                </div>
+            </div>
+        </div><!-- .page-title -->
+        <div class="site-content site-contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-text">
+                            <h2>Our Offices</h2>
+                            <div class="contact-box">
+                                <h3>Tunis (HQ)</h3>
+                                <p>24 Rue Hedi Chaker,Beni Khiar 8000 ,Nabeul</p>
+                                <p>+216 27181515</p>
+                                <a href="{{ asset('#') }} " title="Get Direction">Get Direction</a>
+                            </div>
+                            <div class="contact-box">
+                                <h3>Paris</h3>
+                                <p>Station F, 2 Parvis Alan Turing, 8742, Paris France</p>
+                                <p>+44 (0)34 5312 3505</p>
+                                <a href="{{ asset('#') }} " title="Get Direction">Get Direction</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="contact-form">
+
+
+                            {{ form_start(form) }}
+
+                            <div class="listing-box"  style="">
+                                <h3>We want to hear from you.</h3>
+
+
+                                {% if app.user %}
+
+                                    <div class="field-textarea">
+                                        {{ form_widget(form.Message,{'attr': {'placeholder': 'Message','class':'textar'}}) }}
+                                    </div>
+                                    <div style="visibility: hidden" class="field-group">
+
+                                        {{ form_widget(form.Id,{'attr': {'placeholder': 'Id'}}) }}
+                                    </div>
+                                    <div  class="field-group">
+
+                                        {{ form_widget(form.captchaCode,{'attr': {'placeholder': 'Enter Code'}}) }}
+                                    </div>
+
+                                    <div class="field-submit" data-toggle="modal" data-target="#exampleModal">
+                                        <input type="submit" value="Send Message" class="btn">
+                                    </div>
+
+
+
+                                {% else %}
+                                    <div class="field-group" >
+
+                                        {{ form_widget(form.Email,{'attr': {'placeholder': 'Email'}}) }}
+                                    </div>
+
+                                    <div class="field-group">
+
+                                        {{ form_widget(form.Name,{'attr': {'placeholder': 'Name'}}) }}
+                                    </div>
+
+                                    <div class="field-group">
+
+                                        {{ form_widget(form.Phone,{'attr': {'placeholder': 'Phone'}}) }}
+                                    </div>
+                                    <div class="field-textarea">
+                                        {{ form_widget(form.Message,{'attr': {'placeholder': 'Message','class':'textar'}}) }}
+                                    </div>
+                                    <div style="visibility: hidden" class="field-group">
+
+                                        {{ form_widget(form.Id,{'attr': {'placeholder': 'Id'}}) }}
+                                    </div>
+                                    <div  class="field-group">
+
+                                        {{ form_widget(form.captchaCode,{'attr': {'placeholder': 'Enter Code'}}) }}
+                                    </div>
+
+                                    <div class="field-submit" data-toggle="modal" data-target="#exampleModal">
+                                        <input type="submit" value="Send Message" class="btn">
+                                    </div>
+                                {% endif %}
+
+
+
+
+
+
+                            </div>
+
+
+                            {{ form_end(form) }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .site-content -->
+    </main><!-- .site-main -->
+</body>
+{% endblock %}

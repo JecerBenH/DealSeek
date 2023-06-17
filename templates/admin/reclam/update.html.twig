@@ -1,0 +1,53 @@
+{% extends 'admin/iframe.html.twig' %}
+{% block body %}
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">Horizontal Form</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    {{ form_start(form) }}
+    <form class="form-horizontal">
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                    {{ form_widget(form. Name,{'attr': {'placeholder': 'Name','class':'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    {{ form_widget(form.Email,{'attr': {'placeholder': 'Email','class':'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Phone</label>
+                <div class="col-sm-10">
+                    {{ form_widget(form.Phone,{'attr': {'placeholder': 'Phone','class':'form-control'}})  }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Message</label>
+                <div class="col-sm-10">
+                    {{ form_widget(form.Message,{'attr': {'placeholder': 'Message','class':'form-control'}}) }}
+                </div>
+            </div>
+<div class="float-right">
+    {{ form_widget(form.captchaCode,{'attr': {'placeholder': 'Enter Code'}}) }}
+</div>
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-info">Update</button>
+            <button class="btn btn-default float-right" href="{{ path('reclam_admin_index') }}">Cancel</button>
+        </div>
+        <!-- /.card-footer -->
+    </form>
+    {{ form_end(form) }}
+</div>
+{% endblock body %}

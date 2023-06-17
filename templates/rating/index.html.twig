@@ -1,0 +1,115 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+    <head>
+        <title>Deal - {{ deal.title }}</title>
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+    </head>
+
+    <body>
+<main id="main" class="site-main">
+    <div class="page-title page-title--small align-left" style="background-image: url({{ asset('images/bg/bg-blog.png') }});">
+        <div class="container">
+            <div class="page-title__content">
+                <h1 class="page-title__name">Rating</h1>
+
+            </div>
+        </div>
+    </div><!-- .page-title -->
+    <div class="shop-details">
+        <div class="container">
+            <ul class="shop-details__breadcrumbs breadcrumbs">
+
+            </ul><!-- .place__breadcrumbs -->
+            <div class="shop-details__wrap">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="shop-details__thumb">
+                            <img src="{{ asset('places/'~ deal.title ~'.jpg') }}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="shop-details__summary">
+                            <h2>{{ deal.title }}</h2>
+                            <div class="shop-details__review">
+
+
+
+
+
+
+										<span class="shop-details__review_star">
+                                            {% if deal.rate!=NULL %}
+                                                    {% for i in 1..deal.rate %}
+											              <i class="la la-star"></i>
+
+                                                     {% endfor %}
+                                                {% if deal.rate!=5 %}
+                                                     {% for j in deal.rate+1..5 %}
+                                                         <i class="la la-star-o"></i>
+
+                                                     {% endfor %}
+                                                 {% endif %}
+                                            {% else %}
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            <i class="la la-star-o"></i>
+                                            {% endif %}
+                                        </span>
+
+
+
+
+
+                                <span>({{ count }} reviews)</span>
+                            </div>
+
+                            <div class="shop-details__desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
+                            <div class="shop-details__sku"><b>Rate This place </b></div>
+                                {{ form_start(form) }}
+                                <div>
+                                {{ form_widget(form.value) }}
+                                </div>
+                                <div>
+                                {{ form_widget(form.submit,{'attr': {'class':'right-header__button btn'}}) }}
+                                </div>
+                                {{ form_end(form) }}
+                                <br>
+                            <div class="shop-details__details">
+                                <div class="shop-details__sku"><b>Location: </b><span>{{ deal.place }}</span></div>
+
+                            </div>
+                            <div class="shop-details__share">
+                                <ul>
+                                    <li>
+                                        <a title="Facebook" href="{{ asset('#')}}">
+                                            <i class="la la-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Twitter" href="{{ asset('#')}}">
+                                            <i class="la la-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Instagram" href="{{ asset('#')}}">
+                                            <i class="la la-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .shop-details__wrap -->
+
+        </div>
+    </div><!-- .shop-details -->
+
+</main><!-- .site-main -->
+    </body>
+  {% endblock body %}

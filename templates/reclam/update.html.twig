@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <main id="main" class="site-main contact-main">
+        <div class="page-title page-title--small align-left" style="background-image: url({{ asset('images/bg/bg-about.png') }});">
+            <div class="container">
+                <div class="page-title__content">
+                    <h1 class="page-title__name">Reclamation</h1>
+
+                </div>
+            </div>
+        </div><!-- .page-title -->
+        <div class="site-content site-contact">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="contact-form" align="center">
+
+
+
+
+
+
+                            {{ form_start(form) }}
+
+                            <div class="listing-box"  style="">
+                                <h3>Fill in the new information.</h3>
+
+                                <div class="field-group">
+
+                                    {{ form_widget(form.Name,{'attr': {'placeholder': 'Name'}}) }}
+                                </div>
+                                <div class="field-group">
+
+                                    {{ form_widget(form.Email,{'attr': {'placeholder': 'Email'}}) }}
+                                </div>
+                                <div class="field-group">
+
+                                    {{ form_widget(form.Phone,{'attr': {'placeholder': 'Phone'}}) }}
+                                </div>
+
+                                <div class="field-textarea">
+                                    {{ form_widget(form.Message,{'attr': {'placeholder': 'Message','class':'textar'}}) }}
+                                </div>
+                                <div style="visibility: hidden" class="field-group">
+
+                                    {{ form_widget(form.Id,{'attr': {'placeholder': 'Phone'}}) }}
+                                </div>
+
+                                <div  class="field-group">
+
+                                    {{ form_widget(form.captchaCode) }}
+                                </div>
+                                <div class="field-submit">
+                                    <input type="submit" value="Update" class="btn">
+                                </div>
+
+                            </div>
+
+
+                            {{ form_end(form) }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .site-content -->
+    </main><!-- .site-main -->
+    {% endblock %}

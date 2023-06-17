@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<head><title>Mes Réclamation</title></head>
+<body>
+<div id="wrapper">
+    <!-- .site-header -->
+
+    <div id="main" class="site-main">
+        <div class="owner-top">
+            <div class="container">
+                <div class="owner-top-inner">
+                    <div class="owner-top-info">
+                        <div class="avatar"><img src="{{ asset('images/avatars/male-3.jpg') }}" alt="Roman"></div>
+                        <div class="info">
+                            <h3>{{ app.user.email }}<span class="verified">(Verified)</span></h3>
+                            <p>{% set mb=0 %}
+                             {% for rec in reclame  %}
+                                {% set mb=mb+1 %}
+                             {% endfor %}
+                                {{mb}} Reclamations
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- .owner-top -->
+        <div class="owner-page-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-30">
+                        <div class="owner-page-content">
+                            <h2>Reclamation </h2>
+                            <div class="area-places layout-3col">
+
+                                {% block e %}
+
+
+                                    {% for reclam in reclams %}
+                                        <div class="place-item layout-02 place-hover" data-maps="tartine_manufactory">
+                                            <div class="place-inner">
+                                                <div class="place-thumb">
+                                                    <br>
+                                                    <br>
+                                                    <br>
+
+                                                    <a href="{{ path('reclam_edit', {'id': reclam.id}) }}" class="golo-add-to-wishlist btn-add-to-wishlist " data-place-id="185">
+											<span class="icon-heart">
+												<i class="la la-edit"></i>
+											</span>
+                                                    </a>
+                                                    <a class="entry-category rosy-pink" href="{{ path('reclam_del', {'id': reclam.id}) }}">
+                                                        <i class="las la-window-close"></i><span>Delete </span>
+                                                    </a>
+
+                                                </div>
+
+
+
+                                                {% if reclam.resolu==true %}
+                                                    <div class="entry-detail bg-success">
+                                                        <div class="entry-head">
+
+                                                            <h3 class="place-title"><a>{{ reclam.name }}</a></h3>
+                                                        </div>
+                                                        <div class="place-type list-item">
+                                                            <span>{{ reclam.email }}</span>
+                                                        </div>
+                                                        <div class="open-now">{{ reclam.phone }}</div>
+                                                        <div class="entry-bottom">
+                                                            <div class="place-preview">
+
+                                                                <span class="count-reviews">{{ reclam.message }}</span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                {% else %}
+
+                                                    <div class="entry-detail bg-warning">
+                                                        <div class="entry-head">
+
+                                                            <h3 class="place-title"><a >{{ reclam.name }}</a></h3>
+                                                        </div>
+                                                        <div class="place-type list-item">
+                                                            <span>{{ reclam.email }}</span>
+                                                        </div>
+                                                        <div class="open-now">{{ reclam.phone }}</div>
+                                                        <div class="entry-bottom">
+                                                            <div class="place-preview">
+
+                                                                <span class="count-reviews">{{ reclam.message }}</span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    {% endif %}
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="6">no records found</td>
+                                        </tr>
+
+                                    {% endfor %}
+
+                                {% endblock %}
+
+
+
+                                <div class="navigation text-center">
+                                    <h3>  <b>  {{ knp_pagination_render(reclams) }}</b> </h3>
+                                    <style>
+
+                                        .text-center {
+                                            text-align: center!important;
+
+                                            margin-left: 530px;
+                                        }
+
+                                    </style>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </div><!-- .site-main -->
+
+
+</div><!-- #wrapper -->
+<script data-cfasync="false" src="{{ asset('/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') }}"></script>
+
+</div>
+{% endblock %}
